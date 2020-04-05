@@ -10,6 +10,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
           test travis build
+          mission sucess
         </p>
         <a
           className="App-link"
