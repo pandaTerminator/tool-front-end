@@ -16,6 +16,6 @@ script:
 deploy: 
   provider: script
   skip_cleanup: true
-  script: rsync -a --rsh='ssh -p 22 -o StrictHostKeyChecking=no' $TRAVIS_BUILD_DIR/build $SSH_USER@$DEPLOY_HOST:/www/tool
+  script: rsync -a --rsh='ssh -p 22 -o StrictHostKeyChecking=no -i id_rsa_main' $TRAVIS_BUILD_DIR/build $SSH_USER@$DEPLOY_HOST:/www/tool
   on:
     branch: master
