@@ -12,8 +12,7 @@ before_install:
   -in id_rsa_main.enc -out ~/.ssh/id_rsa_main -d
 - chmod 600 ~/.ssh/id_rsa_main  
 script:
-- npm test
-- npm run build  
+- npm run build
 deploy: 
   provider: script
   skip_cleanup: true
