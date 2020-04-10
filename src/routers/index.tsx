@@ -33,7 +33,7 @@ export default function BasicRouter() {
             <Layout style={{height: '100%'}}>
                 <Header className="header">
                     <Dropdown overlay={menu} className="main-drop-down">
-                        <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                        <a href="/" className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                             Main function
                         </a>
                     </Dropdown>
