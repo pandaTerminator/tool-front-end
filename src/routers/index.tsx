@@ -5,8 +5,7 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-import Dashboard from '../pages/Dashboard'
-import {Layout, Menu, Dropdown, Card} from "antd"
+import {Layout, Menu, Dropdown} from "antd"
 import './index.css'
 import HalfFullWidth from "../components/HalfFullWidth";
 
