@@ -1,31 +1,55 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    Link
 } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard'
-import {Layout} from "antd";
+import {Layout, Menu, Dropdown, Card} from "antd"
+import './index.css'
+import HalfFullWidth from "../components/HalfFullWidth";
+
 export default function BasicRouter() {
-    const { Header, Footer, Content } = Layout
+
+
+    const [currentUrl, setCurrentUrl] = useState('dashboard')
+
+
+    function handleClick (e) {
+        setCurrentUrl(e.key)
+    };
+    const {Header, Content} = Layout;
+    const menu = (
+        <Menu className="main-menu" selectedKeys={[currentUrl]} onClick={handleClick}>
+            <Menu.Item key="dashboard">
+                <Link to='/'>
+                    Half Full width
+                </Link>
+            </Menu.Item>
+        </Menu>
+    )
     return (
         <Router>
-                <Layout style={{ height: '100%'}}>
-                    <Header>
-                        <p>Half and full width auto switch</p>
-                    </Header>
-                    <Content style={{ height: '90%'}}>
-                        <Switch>
-                            <Route path="/about">
-                                <About />
-                            </Route>
-                            <Route path="/">
-                                <Dashboard />
-                            </Route>
-                        </Switch>
-                    </Content>
-                    <Footer>Footer</Footer>
-                </Layout>
+            <Layout style={{height: '100%'}}>
+                <Header className="header">
+                    <Dropdown overlay={menu} className="main-drop-down">
+                        <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                            Main function
+                        </a>
+                    </Dropdown>
+                </Header>
+                <Content style={{height: '95%'}}>
+                    <Switch>
+                        <Route path="/about">
+                            <About/>
+                        </Route>
+                        <Route path="/">
+                            <HalfFullWidth/>
+                        </Route>
+                    </Switch>
+                </Content>
+            </Layout>
         </Router>
     );
 }

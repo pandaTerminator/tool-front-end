@@ -3,7 +3,7 @@ import { Input, Button, Row, Col, notification } from 'antd';
 
 const { TextArea } = Input;
 
-export default function HalfFullWidth(props: any) {
+export default function HalfFullWidth() {
 
     const [inputContent, setInputContent] = useState('')
     const [outputContent, setOutputContent] = useState('')
@@ -29,7 +29,7 @@ export default function HalfFullWidth(props: any) {
         } catch (e) {
             console.log("can't find notification")
         }
-        notification['success']({
+        notification[type]({
             message: `Copy ${type}`,
         });
     });
@@ -43,11 +43,11 @@ export default function HalfFullWidth(props: any) {
                         onChange={ ({ target: { value } }) => {
                             setInputContent(value)
                         } }
-                        placeholder="Controlled autosize"
-                        autoSize={{ minRows: 10 }}
+                        placeholder="Input"
+                        autoSize={{ minRows: 20 }}
                     />
                 </Col>
-                <Col span={4}>
+                <Col span={4} style={{display: 'flex', flexDirection: 'column',padding: '15px'}}>
                     <Button style={{ marginBottom: 16 }} type="primary" onClick={toFullWidth}>To full width</Button>
                     <Button style={{ marginBottom: 16 }}  type="primary" onClick={toHalfWidth}>To half width</Button>
                     <Button className={'copy'} type="primary" data-clipboard-target="#outputContent">Copy</Button>
@@ -57,8 +57,8 @@ export default function HalfFullWidth(props: any) {
                         id="outputContent"
                         value={outputContent}
                         readOnly={true}
-                        placeholder="Controlled autosize"
-                        autoSize={{ minRows: 10 }}
+                        placeholder="Output"
+                        autoSize={{ minRows: 20 }}
                     />
                 </Col>
             </Row>
