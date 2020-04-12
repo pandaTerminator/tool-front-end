@@ -26,6 +26,11 @@ export default function BasicRouter() {
                     Half Full width
                 </Link>
             </Menu.Item>
+            <Menu.Item key="about">
+                <Link to='/about'>
+                    About
+                </Link>
+            </Menu.Item>
         </Menu>
     )
     return (
