@@ -36,16 +36,16 @@ jobs:
           arguments: |
             --acl public-read \
             --cache-control "max-age=86400"
-          aws-access-key-id: $AWS_ACCESS_KEY_ID_BLUE
-          aws-region: $AWS_REGION_BLUE
-          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY_BLUE
+          aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
+          aws-region: AWS_REGION_BLUE
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
           from: bucket
           overwrite: true
-          to: $TO
+          to: TO
       - aws-s3/copy:
           arguments: '--dry-run'
           from: build
-          to: $AWS_S3
+          to: AWS_S3
 orbs:
   aws-s3: circleci/aws-s3@1.0.15
 version: 2.1
