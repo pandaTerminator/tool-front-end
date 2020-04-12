@@ -47,5 +47,5 @@ jobs:
           from: build
           to: AWS_S3
 orbs:
-  aws-s3: circleci/aws-s3@x.y.z
+  aws-s3: circleci/aws-s3@1.0.15
 version: 2.1
