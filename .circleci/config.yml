@@ -37,7 +37,7 @@ jobs:
           aws-region: AWS_REGION_BLUE
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
           from: build
-          to: $AWS_S3/build
+          to: $AWS_S3
           arguments: |
             --acl public-read \
             --cache-control "max-age=86400"
