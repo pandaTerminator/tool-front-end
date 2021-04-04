@@ -17,22 +17,19 @@ export default function HalfFullWidth() {
         setOutputContent(inputContent.replace(/[A-Za-z0-9]/g, function(s) {return String.fromCharCode(s.charCodeAt(0) + 0xFEE0)}));
     }
 
-    // @ts-ignore
-    const clipboard = new ClipboardJS('.copy');
-    clipboard.on('success', function(e) {
-        let type = 'success'
-        if(outputContent === '') {
-            type = 'error'
+
+    function handleCopy () {
+        if (outputContent) {
+            navigator.clipboard.writeText(outputContent)
+            notification['success']({
+                message: `Copy success`,
+            });
+            return false
         }
-        try {
-            notification.destroy()
-        } catch (e) {
-            console.log("can't find notification")
-        }
-        notification[type]({
-            message: `Copy ${type}`,
+        notification['error']({
+            message: `Copy error`,
         });
-    });
+    }
 
     return (
         <div style={{ margin: 24 }}>
@@ -50,11 +47,10 @@ export default function HalfFullWidth() {
                 <Col span={4} style={{display: 'flex', flexDirection: 'column',padding: '15px'}}>
                     <Button style={{ marginBottom: 16 }} type="primary" onClick={toFullWidth}>To full width</Button>
                     <Button style={{ marginBottom: 16 }}  type="primary" onClick={toHalfWidth}>To half width</Button>
-                    <Button className={'copy'} type="primary" data-clipboard-target="#outputContent">Copy</Button>
+                    <Button className={'copy'} type="primary" onClick={handleCopy}>Copy</Button>
                 </Col>
                 <Col span={10}>
                     <TextArea
-                        id="outputContent"
                         value={outputContent}
                         readOnly={true}
                         placeholder="Output"
